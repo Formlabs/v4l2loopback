@@ -1,5 +1,3 @@
-KERNELRELEASE	?= `uname -r`
-KERNEL_DIR	?= /lib/modules/$(KERNELRELEASE)/build
 PWD		:= $(shell pwd)
 obj-m		:= v4l2loopback.o
 
@@ -40,11 +38,11 @@ all: v4l2loopback.ko
 v4l2loopback: v4l2loopback.ko
 v4l2loopback.ko:
 	@echo "Building v4l2-loopback driver..."
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules
 
 install-all: install install-utils install-man
 install:
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules_install
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules_install
 	depmod -a  $(KERNELRELEASE)
 
 install-utils: utils/v4l2loopback-ctl
@@ -58,7 +56,7 @@ install-man: man/v4l2loopback-ctl.1
 clean:
 	rm -f *~
 	rm -f Module.symvers Module.markers modules.order
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) clean
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) clean
 
 distclean: clean
 	rm -f man/v4l2loopback-ctl.1
