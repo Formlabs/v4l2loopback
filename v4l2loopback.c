@@ -175,7 +175,7 @@ module_param(max_openers, int, S_IRUGO | S_IWUSR);
 MODULE_PARM_DESC(max_openers, "how many users can open loopback device");
 
 
-static int devices = -1;
+static int devices = 3;
 module_param(devices, int, 0);
 MODULE_PARM_DESC(devices, "how many devices should be created");
 
@@ -200,8 +200,8 @@ MODULE_PARM_DESC(exclusive_caps, "whether to announce OUTPUT/CAPTURE capabilitie
 #define V4L2LOOPBACK_SIZE_MAX_WIDTH   8192
 #define V4L2LOOPBACK_SIZE_MAX_HEIGHT  8192
 
-#define V4L2LOOPBACK_SIZE_DEFAULT_WIDTH   640
-#define V4L2LOOPBACK_SIZE_DEFAULT_HEIGHT  480
+#define V4L2LOOPBACK_SIZE_DEFAULT_WIDTH   1280
+#define V4L2LOOPBACK_SIZE_DEFAULT_HEIGHT  720
 
 static int max_width = V4L2LOOPBACK_SIZE_MAX_WIDTH;
 module_param(max_width, int, S_IRUGO);
