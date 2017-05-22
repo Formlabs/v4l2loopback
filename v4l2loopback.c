@@ -175,7 +175,7 @@ module_param(max_openers, int, S_IRUGO | S_IWUSR);
 MODULE_PARM_DESC(max_openers, "how many users can open loopback device");
 
 
-static int devices = 4;
+static int devices = 5;
 module_param(devices, int, 0);
 MODULE_PARM_DESC(devices, "how many devices should be created");
 
